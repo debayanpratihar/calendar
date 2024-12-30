@@ -66,7 +66,7 @@ A feature-rich calendar application built with Next.js, Tailwind CSS, and MongoD
 2. Add the following line with your MongoDB URI:
 
    ```env
-   MONGODB_URI=mongodb+srv://calen:calen@cluster0.keie8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+   MONGODB_URI=mongodb+srv://w=majority&appName=Cluster0
    ```
 
 ---
