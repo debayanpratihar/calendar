@@ -1,6 +1,6 @@
 import { Bell, Search, User } from 'lucide-react'
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+import { Input } from "../components/ui/input"
+import { Button } from "../components/ui/button"
 
 export function Header() {
   return (
@@ -23,10 +23,10 @@ export function Header() {
             </div>
           </div>
           <div className="ml-4 flex items-center md:ml-6">
-            <Button variant="ghost" size="icon">
+            <Button>
               <Bell className="h-6 w-6" aria-hidden="true" />
             </Button>
-            <Button variant="ghost" size="icon">
+            <Button>
               <User className="h-6 w-6" aria-hidden="true" />
             </Button>
           </div>

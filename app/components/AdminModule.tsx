@@ -2,14 +2,14 @@
 
 import React, { useState } from 'react'
 import { useAppContext } from '@/app/context/AppContext'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Button } from "../components/ui/button"
+import { Input } from "../components/ui/input"
+import { Label } from "../components/ui/label"
+import { Textarea } from "../components/ui/textarea"
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../components/ui/table"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../components/ui/dialog"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
 import { Trash2, Edit } from 'lucide-react'
 
 export const AdminModule: React.FC = () => {
@@ -136,7 +136,7 @@ export const AdminModule: React.FC = () => {
         <TabsTrigger value="companies">Companies</TabsTrigger>
         <TabsTrigger value="methods">Communication Methods</TabsTrigger>
       </TabsList>
-      <TabsContent value="companies">
+      <TabsContent data-value="companies">
         <Card>
           <CardHeader>
             <CardTitle>{editingCompany ? 'Edit Company' : 'Add New Company'}</CardTitle>
@@ -234,10 +234,10 @@ export const AdminModule: React.FC = () => {
                     <TableCell>{company.phoneNumbers.join(', ')}</TableCell>
                     <TableCell>{company.communicationPeriodicity} days</TableCell>
                     <TableCell>
-                      <Button variant="ghost" size="sm" onClick={() => handleEditCompany(company._id)}>
+                      <Button className="ghost sm" onClick={() => handleEditCompany(company._id)}>
                         <Edit className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="sm" onClick={() => handleDeleteCompany(company._id)}>
+                      <Button className="ghost sm" onClick={() => handleDeleteCompany(company._id)}>
                         <Trash2 className="h-4 w-4" />
                       </Button>
                     </TableCell>
@@ -248,7 +248,7 @@ export const AdminModule: React.FC = () => {
           </CardContent>
         </Card>
       </TabsContent>
-      <TabsContent value="methods">
+      <TabsContent data-value="methods">
         <Card>
           <CardHeader>
             <CardTitle>{editingMethod ? 'Edit Communication Method' : 'Add New Communication Method'}</CardTitle>
@@ -319,10 +319,10 @@ export const AdminModule: React.FC = () => {
                     <TableCell>{method.sequence}</TableCell>
                     <TableCell>{method.mandatory ? 'Yes' : 'No'}</TableCell>
                     <TableCell>
-                      <Button variant="ghost" size="sm" onClick={() => handleEditMethod(method._id)}>
+                      <Button className="ghost sm" onClick={() => handleEditMethod(method._id)}>
                         <Edit className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="sm" onClick={() => handleDeleteMethod(method._id)}>
+                      <Button className="ghost sm" onClick={() => handleDeleteMethod(method._id)}>
                         <Trash2 className="h-4 w-4" />
                       </Button>
                     </TableCell>

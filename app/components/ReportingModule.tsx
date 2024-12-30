@@ -2,9 +2,9 @@
 
 import React, { useMemo } from 'react'
 import { useAppContext } from '@/app/context/AppContext'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
-import { format, startOfMonth, endOfMonth, eachDayOfInterval } from 'date-fns'
+import { format, isValid, startOfMonth, endOfMonth, eachDayOfInterval, parseISO } from 'date-fns'
 
 export const ReportingModule: React.FC = () => {
   const { companies, communicationMethods, communications } = useAppContext()
@@ -23,10 +23,22 @@ export const ReportingModule: React.FC = () => {
     const lastDayOfMonth = endOfMonth(today)
     const daysInMonth = eachDayOfInterval({ start: firstDayOfMonth, end: lastDayOfMonth })
 
-    return daysInMonth.map(day => ({
-      date: format(day, 'dd'),
-      count: communications.filter(comm => format(comm.date, 'yyyy-MM-dd') === format(day, 'yyyy-MM-dd')).length
-    }))
+    return daysInMonth.map(day => {
+      const dayString = format(day, 'yyyy-MM-dd');
+      
+      return {
+        date: format(day, 'dd'),
+        count: communications.filter(comm => {
+          const commDate = parseISO(comm.date); // Assuming comm.date is a string in ISO format
+
+          // Validate the date before formatting
+          if (isValid(commDate) && isValid(day)) {
+            return format(commDate, 'yyyy-MM-dd') === dayString;
+          }
+          return false;
+        }).length
+      }
+    });
   }, [communications])
 
   return (
@@ -93,4 +105,3 @@ export const ReportingModule: React.FC = () => {
     </div>
   )
 }
-

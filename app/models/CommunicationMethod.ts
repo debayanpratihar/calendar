@@ -1,11 +1,18 @@
-import mongoose from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 
-const CommunicationMethodSchema = new mongoose.Schema({
+export interface ICommunicationMethod extends Document {
+  name: string;
+  id: string;
+  description?: string;
+  sequence: number;
+  mandatory: boolean;
+}
+
+const CommunicationMethodSchema: Schema = new mongoose.Schema({
   name: { type: String, required: true },
   description: { type: String },
   sequence: { type: Number, required: true },
   mandatory: { type: Boolean, default: false },
 });
 
-export default mongoose.models.CommunicationMethod || mongoose.model('CommunicationMethod', CommunicationMethodSchema);
-
+export default mongoose.models.CommunicationMethod || mongoose.model<ICommunicationMethod>('CommunicationMethod', CommunicationMethodSchema);

@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "../components/ui/button"
+import { Input } from "../components/ui/input"
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
 import { useAppContext } from '@/app/context/AppContext'
 
 export function SignUpPage() {
@@ -13,7 +13,7 @@ export function SignUpPage() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState('')
   const router = useRouter()
-  const { signUp } = useAppContext()
+  // const { signUp } = useAppContext()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -23,7 +23,7 @@ export function SignUpPage() {
       return
     }
     try {
-      await signUp(email, password)
+      // await signUp(email, password)
       router.push('/dashboard')
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
