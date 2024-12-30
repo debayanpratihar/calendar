@@ -1,4 +1,3 @@
-```markdown
 # Calendar Application
 
 A feature-rich calendar application built with Next.js, Tailwind CSS, and MongoDB. This guide will help you set up, install dependencies, run, and deploy the application.
@@ -27,7 +26,7 @@ A feature-rich calendar application built with Next.js, Tailwind CSS, and MongoD
 
    ```bash
    npx create-next-app@latest calendar
-   ```
+
 
    Follow the prompts:
    - Use TypeScript: `Yes`
